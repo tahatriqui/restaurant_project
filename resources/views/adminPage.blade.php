@@ -12,9 +12,13 @@
             </nav>
             <div class="card">
                 <div class="card-header">
+                    <a href="{{route('cat.show')}}">
+                        <button class="btn btn-success btn-default" style="margin-left: 6px">
+                            ajouter une category
+                        </button></a>
                     <a href="">
                         <button class="btn btn-info btn-default" style="margin-left:6px">
-                            affice des repas
+                            afficher les repas
                         </button></a>
                     <a href="">
                         <button class="btn btn-danger btn-default" style="margin-left: 6px">

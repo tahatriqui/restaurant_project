@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\visitorController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +24,4 @@ Auth::routes();
 
 Route::get('/',[visitorController::class,'index'])->name('Vpage');
 
-
+Route::get('/category',[CategoryController::class,'show'])->name('cat.show');
