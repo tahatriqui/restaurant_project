@@ -25,3 +25,7 @@ Auth::routes();
 Route::get('/',[visitorController::class,'index'])->name('Vpage');
 
 Route::get('/category',[CategoryController::class,'show'])->name('cat.show');
+
+Route::post('/category/store',[CategoryController::class,'store'])->name('cat.store');
+
+Route::get('/category/{id}',[CategoryController::class,'delete'])->name('cat.delete');
