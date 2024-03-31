@@ -20,11 +20,11 @@
 
     <link rel="stylesheet" href="sweetalert2.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-
+    <link rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 
 
@@ -102,28 +102,56 @@
             e.preventDefault();
             var link = $(this).attr("href");
             Swal.fire({
-                    title: "T'es sûre ?",
-                    icon: 'warning',
-                    iconHtml: '!',
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'oui',
-                    cancelButtonText: 'non',
-                    showCancelButton: true,
-                    showCloseButton: true
+                title: "T'es sûre ?",
+                icon: 'warning',
+                iconHtml: '!',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'oui',
+                cancelButtonText: 'non',
+                showCancelButton: true,
+                showCloseButton: true
 
-                    }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        window.location.href = link;
-                                        Swal.fire(
-                                            "catégorie supprimée avec succès",
-                                            "catégorie supprimée avec succès",
-                                            'succès'
-                                        )
-                                    }
-                                });
-                            });
-                        </script>
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = link;
+                    Swal.fire(
+                        "catégorie supprimée avec succès",
+                        "catégorie supprimée avec succès",
+                        'succès'
+                    )
+                }
+            });
+        });
+    </script>
+
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+        @if (Session::has('message_id'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message_id') }}");
+
+                    break;
+
+                case 'success':
+                    toastr.success("{{ Session::get('message_id') }}");
+                    break;
+
+                case 'warning':
+                    toastr.warning("{{ Session::get('message_id') }}");
+                    break;
+
+                case 'error':
+                    toastr.error("{{ Session::get('message_id') }}");
+                    break;
+            }
+        @endif
+    </script>
+
 </body>
 
 </html>

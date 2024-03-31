@@ -75,17 +75,20 @@
                     <h5 class="modal-title" id="exampleModalLabel">Nom de category</h5>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route('cat.update') }}" method="post">
+                        @csrf
+                        <input type="hidden" class="form-control" id="id" name="id">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">nom de category:</label>
                             <input type="text" class="form-control" id="cat_name" name="cat_name">
                         </div>
-                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary ">modifier</button>
+                    <button type="submit" class="btn btn-primary ">modifier</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
@@ -99,7 +102,7 @@
                     return $(this).text();
                 }).get();
                 console.log(data);
-                $('#id').val(data[2]);
+                $('#id').val(data[0]);
                 $('#cat_name').val(data[1]);
             });
         });

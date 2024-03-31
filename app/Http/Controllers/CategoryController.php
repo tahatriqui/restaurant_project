@@ -29,4 +29,18 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect()->route("cat.show")->with('message','suppression avec succès!');
 }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+        'cat_name' => 'required|string|unique:categories|min:3|max:40',
+        ]);
+        $id=$request->id;
+        Category::findOrFail($id)->update([
+        'cat_name' => $request->cat_name,
+        ]);
+        return redirect()->route('cat.show')->with('message', 'modification avec succès! ');
+        //end else
+    }
+
 }
