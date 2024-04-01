@@ -17,7 +17,7 @@
                             Ajouter une category
                         </button></a>
                     <a href="{{route('meal.index')}}">
-                        <button style="background-color: #F0F8FF" class="btn  btn-default" style="margin-left:6px">
+                        <button  class="btn text-light  btn-info btn-default" style="margin-left:6px">
                             Afficher les repas
                         </button></a>
                     <a href="{{ route('meal.create') }}">
@@ -48,17 +48,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Ahmad</td>
+                                <td>06.00.00.00.00</td>
+                                <td>ahmad@gmail.com</td>
+                                <td>30/4/2021</td>
+                                <td>15:23</td>
+                                <td>pizza</td>
+                                <td>2</td>
+                                <td>49 DH</td>
+                                <td>98 DH</td>
+                                <td>Rabat rue almorabitin</td>
+                                <td>En attent</td>
                                 <td></td>
                                 <td></td>
                             </tr>

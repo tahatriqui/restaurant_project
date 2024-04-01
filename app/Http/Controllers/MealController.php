@@ -97,4 +97,8 @@ class MealController extends Controller
         }
     }
 
+    public function show_details($id){
+        $meal = Meal::findOrFail($id);
+        return view('meal.meal_details',compact('meal'));
+    }
 }
