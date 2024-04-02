@@ -10,17 +10,30 @@
                         <form action="" method="get">
                             @csrf
                             <ul class="list-group">
-                                <a href="/" class="list-group-item list-group-item-action">la page d'accueil</a>
+                                <a href="/home" class="list-group-item list-group-item-action">la page d'accueil</a>
                             </ul>
                             @foreach ($cats as $row)
                                 <ul class="list-group">
                                     <input type="submit" value="{{ $row->cat_name }}" name="category"
                                         class="list-group-item list-group-item-action">
+                                    </ul>
                             @endforeach
                         </form>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-header text-center">les demandes precedent</div>
+                    <div class="card-body text-right">
+                        <form action="" method="get">
+                            <ul class="list-group">
+                            <a href="/order/show" class="list-group-item list-group-item-action">Afficher les demandes precedent</a>
+                        </ul>
+                        </form>
+                    </div>
+                </div>
             </div>
+
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
@@ -37,8 +50,8 @@
                                     <strong>{{ $meal->name }}</strong>
                                     <p>{{ $meal->description }}</p>
                                     <div class="">
-                                        <a href="{{ route('meal.details',$meal->id) }}" style='font-size:16px' title="Add Cart"
-                                            class="btn btn-success">
+                                        <a href="{{ route('meal.details', $meal->id) }}" style='font-size:16px'
+                                            title="Add Cart" class="btn btn-success">
                                             <i class="fa fa-bell-slash-o" style="font-size: 12px;color:white">Demande
                                                 maintenant
                                         </a></i>
@@ -52,8 +65,10 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 
 
     {{-- style part --}}

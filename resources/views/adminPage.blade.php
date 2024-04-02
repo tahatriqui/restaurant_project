@@ -16,8 +16,8 @@
                         <button class="btn btn-success btn-default" style="margin-left: 6px">
                             Ajouter une category
                         </button></a>
-                    <a href="{{route('meal.index')}}">
-                        <button  class="btn text-light  btn-info btn-default" style="margin-left:6px">
+                    <a href="{{ route('meal.index') }}">
+                        <button class="btn text-light  btn-info btn-default" style="margin-left:6px">
                             Afficher les repas
                         </button></a>
                     <a href="{{ route('meal.create') }}">
@@ -40,6 +40,7 @@
                                 <th scope="col">Total($)</th>
                                 <th scope="col">Adress</th>
                                 <th scope="col">Etat</th>
+                                <th scope="col">Demande accepter</th>
                                 <th scope="col">Demande rejetée</th>
                                 <th scope="col">Demande complète</th>
 
@@ -47,21 +48,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ahmad</td>
-                                <td>06.00.00.00.00</td>
-                                <td>ahmad@gmail.com</td>
-                                <td>30/4/2021</td>
-                                <td>15:23</td>
-                                <td>pizza</td>
-                                <td>2</td>
-                                <td>49 DH</td>
-                                <td>98 DH</td>
-                                <td>Rabat rue almorabitin</td>
-                                <td>En attent</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach ($order as $row)
+                                <tr>
+                                    <td>{{ $row->user->name }}</td>
+                                    <td>{{ $row->phone }}</td>
+                                    <td>{{ $row->user->email }}</td>
+                                    <td>{{ $row->date }}</td>
+                                    <td>{{ $row->time }}</td>
+                                    <td>{{ $row->meal->name }}</td>
+                                    <td>{{ $row->qty }}</td>
+                                    <td>{{ $row->meal->price }} DH</td>
+                                    <td>{{ $row->meal->price * $row->qty }} DH</td>
+                                    <td>{{ $row->adress }}</td>
+                                    <td><strong>{{ $row->status }}</strong></td>
+
+
+                                <form action="{{route('order.status',$row->id)}}" method="post">
+                                    @csrf
+                                    <td> <input type="submit" name="status" class="btn btn-info" value="accetpte"></td>
+                                    <td> <input type="submit" name="status" class="btn btn-danger" value="refuse"></td>
+                                    <td><input type="submit" name="status" class="btn btn-success" value="complete"></td>
+                                </form>
+                                </tr>
+
+                            @endforeach
+
 
                         </tbody>
                     </table>
@@ -69,4 +80,16 @@
             </div>
         </div>
     </div>
+    <style>
+
+
+        td {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        td:hover {
+            background-color: gray;
+            color: white;
+        }
+    </style>
 @endsection

@@ -18,30 +18,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[visitorController::class,'index'])->name('Vpage');
+Route::get('/', [visitorController::class, 'index'])->name('Vpage');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //categories
-Route::get('/category',[CategoryController::class,'show'])->name('cat.show');
+Route::get('/category', [CategoryController::class, 'show'])->name('cat.show');
 
-Route::post('/category/store',[CategoryController::class,'store'])->name('cat.store');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('cat.store');
 
-Route::get('/category/{id}',[CategoryController::class,'delete'])->name('cat.delete');
+Route::get('/category/{id}', [CategoryController::class, 'delete'])->name('cat.delete');
 
 Route::post('/category/update', [CategoryController::class, 'update'])->name('cat.update');
 
 //meals
-Route::get('/meal/index',[MealController::class,'index'])->name('meal.index');
+Route::get('/meal/index', [MealController::class, 'index'])->name('meal.index');
 
-Route::get('/meal/create',[MealController::class,'create'])->name('meal.create');
+Route::get('/meal/create', [MealController::class, 'create'])->name('meal.create');
 
-Route::post('/meal/store',[MealController::class,'store'])->name('meal.store');
+Route::post('/meal/store', [MealController::class, 'store'])->name('meal.store');
 
-Route::get('/meal/edit/{id}',[MealController::class,'edit'])->name('meal.edit');
+Route::get('/meal/edit/{id}', [MealController::class, 'edit'])->name('meal.edit');
 
-Route::post('/meal/update/{id}',[MealController::class,'update'])->name('meal.update');
+Route::post('/meal/update/{id}', [MealController::class, 'update'])->name('meal.update');
 
-Route::get('/meal/show/{id}',[MealController::class,'show_details'])->name('meal.details');
+Route::get('/meal/show/{id}', [MealController::class, 'show_details'])->name('meal.details');
+
+//order route
+
+Route::post('/order/store', [HomeController::class, 'orderstore'])->name('order.store');
+
+Route::get('/order/show', [HomeController::class, 'show_order']);
+
+Route::post('order/{id}/status',[HomeController::class,'changestatus'])->name("order.status");
