@@ -17,7 +17,7 @@ class visitorController extends Controller
                 $cat1 = "la page d'accueil";
                 $meals = Meal::all();
 
-                return view('userPage', compact('cats', 'meals', "cat1"));
+                return view('visitorPage', compact('cats', 'meals', "cat1"));
             } else {
                 $cat1 = $request->category;
                 $meals = Meal::where('category', $request->category)->get();

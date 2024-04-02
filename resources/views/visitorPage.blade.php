@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
             <div class="col-md-8">
@@ -64,6 +64,15 @@
 
     {{-- style part --}}
     <style>
+          img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        img:hover {
+            opacity: 0.8;
+            transform: scale(0.9);
+        }
         a.list-group-item {
             font-size: 18px;
         }

@@ -16,7 +16,7 @@
                                 <ul class="list-group">
                                     <input type="submit" value="{{ $row->cat_name }}" name="category"
                                         class="list-group-item list-group-item-action">
-                                    </ul>
+                                </ul>
                             @endforeach
                         </form>
                     </div>
@@ -27,8 +27,9 @@
                     <div class="card-body text-right">
                         <form action="" method="get">
                             <ul class="list-group">
-                            <a href="/order/show" class="list-group-item list-group-item-action">Afficher les demandes precedent</a>
-                        </ul>
+                                <a href="/order/show" class="list-group-item list-group-item-action">Afficher les demandes
+                                    precedent</a>
+                            </ul>
                         </form>
                     </div>
                 </div>
@@ -45,8 +46,8 @@
                         <div class="row">
                             @forelse ($meals as $meal)
                                 <div class="col-md-4 mt-2 text-center" style="border:1px solid rgba(149,212,159)">
-                                    <img src="{{ asset($meal->image) }}" class="img-thmbnail" style="width:100%"
-                                        alt="">
+                                    <a href="{{ route('meal.details', $meal->id) }}"> <img src="{{ asset($meal->image) }}" class="img-thmbnail" style="width:100%"
+                                        alt=""></a>
                                     <strong>{{ $meal->name }}</strong>
                                     <p>{{ $meal->description }}</p>
                                     <div class="">
@@ -73,6 +74,15 @@
 
     {{-- style part --}}
     <style>
+        img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        img:hover {
+            opacity: 0.8;
+            transform: scale(0.9);
+        }
+
         a.list-group-item {
             font-size: 18px;
         }
